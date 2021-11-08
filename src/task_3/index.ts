@@ -17,10 +17,10 @@ export class Vault implements ISecureVaultRequisites{
 				valute.value -= currency.value;
 				wCurrency = true
 			}
+			else {
+				throw new Error('Недостаточно средств')
+			}
 		});
-		if (!wCurrency) {
-			throw new Error('Недостаточно средств')
-		}
 	}
 
 	public deposit(currency: Currency) {

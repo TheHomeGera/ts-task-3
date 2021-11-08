@@ -7,34 +7,34 @@
  * Gold
 */
 
-import {Currency} from "../task_1";
+import {Currency, CurrencyType} from "../task_1";
 
 export class Dollar extends Currency {
     constructor(value: number) {
-        super('Dollar', value, 'USD');
+        super('Dollar', value, 'USD', CurrencyType.Material);
     }
 }
 
 export class Ruble extends Currency {
     constructor(value: number) {
-        super('Ruble', value, 'RUB');
+        super('Ruble', value, 'RUB', CurrencyType.Material);
     }
 }
 
 export class XRP extends Currency {
     constructor(value: number) {
-        super('XRP', value, 'XRP');
+        super('XRP', value, 'XRP', CurrencyType.CryptoCurrency);
     }
 }
 
 export class Etherium extends Currency {
     constructor(value: number) {
-        super('Etherium', value, 'ETH');
+        super('Etherium', value, 'ETH', CurrencyType.CryptoCurrency);
     }
 }
 
 export class Gold extends Currency {
     constructor(value: number) {
-        super('Gold', value, 'GRAMME');
+        super('Gold', value, 'GRAMME',CurrencyType.MetalName);
     }
 }
