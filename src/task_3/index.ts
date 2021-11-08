@@ -10,17 +10,17 @@ export class Vault implements ISecureVaultRequisites{
 	public id: number;
 	public store: Set<Currency> = new Set<Currency>()
 
-	public withdraw(currency: Currency) {
-		let wCurrency = false;
-		this.store.forEach((valute) => {
+	public withdraw(currency: Currency) {;
+		let withdrawCurrency = false;
+		this.store.forEach(valute=> {
 			if (valute.name === currency.name && valute.value >= currency.value) {
-				valute.value -= currency.value;
-				wCurrency = true
+				withdrawCurrency = true;				
+				valute.value -= currency.value
 			}
-			else {
-				throw new Error('Недостаточно средств')
-			}
-		});
+		})
+		if (!withdrawCurrency) {
+			throw new Error('incorrect request')
+		}
 	}
 
 	public deposit(currency: Currency) {
