@@ -10,17 +10,29 @@
 import { Currency } from "../task_1";
 import { ISecureVaultRequisites } from "../task_3";
 
-export class SmartContract implements IContract{
+abstract class Contract implements IContract {
+    public id: number;
+    public state: ContractState = ContractState.pending;
+    public value: Currency;
+    public receiver: ISecureVaultRequisites;
+    public sender: ISecureVaultRequisites;
 
+    public signAndTransfer(): void { //Если бы тут не войд был бы, то таймауты можно было бы выставлять по типу материалов сразу без отдельных классов
+        this.state = ContractState.transfer;
+    }
+
+    public closeTransfer(): void {
+        this.state = ContractState.close;
+    }
+
+    public rejectTransfer(): void {
+        this.state = ContractState.rejected;
+    }
 }
 
-export class BankingContract implements IContract{
-
-}
-
-export class LogisticContract implements IContract{
-
-}
+export class SmartContract extends Contract{}
+export class BankingContract extends Contract{}
+export class LogisticContract extends Contract{}
 
 
 export interface IContract{

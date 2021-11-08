@@ -8,9 +8,58 @@
  */
 
 export class Currency{
+    public name: string
+    public value: number
+    public unit: string
+    public type: CurrencyType
 
+    constructor(name: string, value: number, unit: string, type?: CurrencyType) {
+        if (!name || !unit || value < 0 || value === undefined) {
+            throw new Error('неправильный ввод');
+        }
+
+        this.name = name.toUpperCase();
+        this.value = value;
+        this.unit = unit.toUpperCase();
+        if (type) {
+            this.type = type;
+        }
+        else if (this.unit in MaterialNames) {
+            this.type = CurrencyType.Material;
+        }
+        else if (name in CryptoNames) {
+            this.type = CurrencyType.CryptoCurrency;
+        }
+        else if (name in MetalNames) {
+            this.type = CurrencyType.MetalName;
+        }
+        else throw new Error('Error')
+    }
 }
 
 export enum CurrencyType {
+    Material,
+    CryptoCurrency,
+    MetalName,
+}
 
+enum MaterialNames {
+    RUB,
+    USD,
+    EUR,
+}
+
+enum CryptoNames {
+    BTC,
+    XRP,
+    ETHERIUM,
+    DOGE,
+    ALPHA,
+}
+
+enum MetalNames {
+    GOLD,
+    SILVER,
+    PLATINUM,
+    N1KOT1N,
 }
