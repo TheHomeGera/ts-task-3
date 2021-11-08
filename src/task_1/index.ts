@@ -17,8 +17,8 @@ export class Currency{
         if (!name || !unit || value < 0 || value === undefined) {
             throw new Error('неправильный ввод');
         }
-
-        this.name = name.toUpperCase();
+        this.name = name;
+        name.toUpperCase();
         this.value = value;
         this.unit = unit.toUpperCase();
         if (type) {
