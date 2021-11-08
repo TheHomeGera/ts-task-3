@@ -12,7 +12,7 @@ export class Vault implements ISecureVaultRequisites{
 
 	public withdraw(currency: Currency) {;
 		let withdrawCurrency = false;
-		this.store.forEach(valute=> {
+		this.store.forEach((valute) => {
 			if (valute.name === currency.name && valute.value >= currency.value) {
 				withdrawCurrency = true;				
 				valute.value -= currency.value
