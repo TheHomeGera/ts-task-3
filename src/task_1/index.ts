@@ -47,6 +47,7 @@ enum MaterialNames {
     RUB,
     USD,
     EUR,
+    Ruble,
 }
 
 enum CryptoNames {

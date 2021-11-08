@@ -22,10 +22,9 @@ export class Vault implements ISecureVaultRequisites{
 					throw new Error('Недостаточно средств');
 				}
 			}
-				
-		})
+		});
 		if (!withdrawCurrency) {
-			throw new Error('Ошибка выполнения')
+			throw new Error('Ошибка выполнения');
 		}
 	}
 
