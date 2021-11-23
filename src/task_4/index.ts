@@ -17,7 +17,7 @@ abstract class Contract implements IContract {
     public receiver: ISecureVaultRequisites;
     public sender: ISecureVaultRequisites;
 
-    public signAndTransfer(): void { //Если бы тут не войд был бы, то таймауты можно было бы выставлять по типу материалов сразу без отдельных классов
+    public signAndTransfer(): void {
         this.state = ContractState.transfer;
     }
 
@@ -29,10 +29,21 @@ abstract class Contract implements IContract {
         this.state = ContractState.rejected;
     }
 }
+export class BankingContract extends Contract {}
 
-export class SmartContract extends Contract{}
-export class BankingContract extends Contract{}
-export class LogisticContract extends Contract{}
+export class SmartContract extends Contract {
+    closeTransfer() {
+        setTimeout(() => this.closeTransfer(), 3000);
+        super.closeTransfer();
+    };
+}
+
+export class LogisticContract extends Contract {
+    closeTransfer() {
+        setTimeout(() => this.closeTransfer(), 6000);
+        super.closeTransfer();
+    };
+}
 
 
 export interface IContract{

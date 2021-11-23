@@ -14,7 +14,7 @@ export class Currency{
     public type: CurrencyType
 
     constructor(name: string, value: number, unit: string, type?: CurrencyType) {
-        if (!name || !unit || value < 0 || value === undefined) {
+        if (!name || !unit || value < 0 || Number(value)) {
             throw new Error('неправильный ввод');
         }
         this.name = name;
