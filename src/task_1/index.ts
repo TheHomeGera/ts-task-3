@@ -18,7 +18,6 @@ export class Currency{
             throw new Error('неправильный ввод');
         }
         this.name = name;
-        name.toUpperCase();
         this.value = value;
         this.unit = unit.toUpperCase();
         if (type) {
