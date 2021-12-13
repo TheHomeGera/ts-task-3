@@ -18,11 +18,11 @@ export class BankController{
     private vaultStore: Vault[] = [];
 
     public static getController(): BankController {
-        if (!BankController._controller) {
-            BankController._controller = new BankController();
+        if (!this._controller) {
+            this._controller = new BankController();
         }
 
-        return BankController._controller;
+        return this._controller;
     }
 
     public registerVault(vault: Vault): ISecureVaultRequisites {

@@ -29,19 +29,24 @@ abstract class Contract implements IContract {
         this.state = ContractState.rejected;
     }
 }
-export class BankingContract extends Contract {}
+
+export class BankingContract extends Contract {
+    signAndTransfer() {
+        this.state = ContractState.close;
+    };
+}
 
 export class SmartContract extends Contract {
-    closeTransfer() {
-        setTimeout(() => this.closeTransfer(), 3000);
-        super.closeTransfer();
+    signAndTransfer() {
+        setTimeout(() => this.state = ContractState.transfer, 3000);
+        this.closeTransfer();
     };
 }
 
 export class LogisticContract extends Contract {
-    closeTransfer() {
-        setTimeout(() => this.closeTransfer(), 6000);
-        super.closeTransfer();
+    signAndTransfer() {
+        setTimeout(() => this.state = ContractState.transfer, 6000);
+        this.closeTransfer();
     };
 }
 
@@ -99,3 +104,4 @@ export enum ContractState{
      */
     rejected
 }
+
